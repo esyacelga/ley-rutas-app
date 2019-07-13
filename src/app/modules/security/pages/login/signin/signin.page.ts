@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {UsuarioService} from '../../../service/usuario.service';
+import {Router} from '@angular/router';
+import {ToastController} from '@ionic/angular';
+import {DURATION_TOAST} from '../../../../system/generic/classes/constant';
 
 @Component({
   selector: 'app-signin',
@@ -6,10 +10,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signin.page.scss'],
 })
 export class SigninPage implements OnInit {
+  parametro: string;
 
-  constructor() { }
+  constructor(private usuarioService: UsuarioService, private router: Router, private notify: ToastController) {
+  }
 
   ngOnInit() {
+  }
+
+  verifyUser(parametro) {
+    const data = '{"idUsuarioApp":"5","correo":null,"clave":"seya1922"}';
+    const test = JSON.parse(data);
+    this.usuarioService.verificarUsuario(parametro).then(respuesta => {
+      if (respuesta) {
+        this.router.navigate(['/password', respuesta.idUsuarioApp]);
+      } else {
+        this.presentToast('El usuario no existe', 'warning');
+      }
+    });
+  }
+
+
+  private async presentToast(mensaje, color) {
+    const toast = await this.notify.create({
+      message: mensaje,
+      duration: DURATION_TOAST,
+      color: color
+    });
+    toast.present();
   }
 
 }

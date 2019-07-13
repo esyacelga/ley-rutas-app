@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { SigninPage } from './signin.page';
+import {RestConectionModule} from '../../../../system/generic/rest-conection/rest-conection.module';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    RestConectionModule,
     RouterModule.forChild(routes)
   ],
   declarations: [SigninPage]
