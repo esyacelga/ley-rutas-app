@@ -17,14 +17,22 @@ export class RegisterPage implements OnInit {
   registoMensajes: RegistroMensajes = new RegistroMensajes();
   error_messages = this.registoMensajes.error_messages;
 
-  constructor(public usuarioService: UsuarioService, public formFuilder: FormBuilder, private router: Router) {
+  constructor(public usuarioService: UsuarioService
+              , public formFuilder: FormBuilder, private router: Router) {
     this.loginForm = this.formFuilder.group({
       primerNombre: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(2),
-        Validators.maxLength(100)
+        Validators.maxLength(150)
       ])),
-      segundoNombre: new FormControl('', null),
+      fechaNacimiento: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      identificacion: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(13)
+      ])),
       primerApellido: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(2),

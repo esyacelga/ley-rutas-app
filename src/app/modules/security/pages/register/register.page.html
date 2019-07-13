@@ -5,7 +5,7 @@
 
     </ion-buttons>
     <div class="ion-text-end">
-      <ion-button ion-button color="primary" (click)="registerNewUser()">CREAR</ion-button>
+      <ion-button ion-button color="primary" (click)="registerNewUser()">REGISTRAR</ion-button>
     </div>
     <!--<ion-title>Registro de nuevo usuario</ion-title>-->
   </ion-toolbar>
@@ -14,7 +14,7 @@
 <ion-content>
   <form [formGroup]="loginForm" (ngSubmit)="registerNewUser()">
     <ion-item>
-      <ion-label position="floating">Primer nombre</ion-label>
+      <ion-label position="floating">Nombres</ion-label>
       <ion-input formControlName="primerNombre"></ion-input>
     </ion-item>
     <div class="error-messages">
@@ -26,10 +26,7 @@
       </ng-container>
     </div>
 
-    <ion-item>
-      <ion-label position="floating">Segundo nombre</ion-label>
-      <ion-input formControlName="segundoNombre"></ion-input>
-    </ion-item>
+
 
     <ion-item>
       <ion-label position="floating">Primer apellido</ion-label>
@@ -45,10 +42,37 @@
       </ng-container>
     </div>
 
+
     <ion-item>
       <ion-label position="floating">Segundo apellido</ion-label>
       <ion-input formControlName="segundoApellido"></ion-input>
     </ion-item>
+
+
+    <ion-item>
+      <ion-label position="floating">Identificacion</ion-label>
+      <ion-input maxlength="13" formControlName="identificacion"></ion-input>
+    </ion-item>
+    <div class="error-messages">
+      <ng-container *ngFor="let error of error_messages.identificacion">
+        <div class="error-message"
+             *ngIf="loginForm.get('identificacion').hasError(error.type) && (loginForm.get('identificacion').dirty || loginForm.get('identificacion').touched) ">
+          {{error.message}}
+        </div>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label>Fecha de nacimiento</ion-label>
+      <ion-datetime formControlName="fechaNacimiento" display-format="MMM DD, YYYY"></ion-datetime>
+    </ion-item>
+    <div class="error-messages">
+      <ng-container *ngFor="let error of error_messages.fechaNacimiento">
+        <div class="error-message"
+             *ngIf="loginForm.get('fechaNacimiento').hasError(error.type) && (loginForm.get('fechaNacimiento').dirty || loginForm.get('fechaNacimiento').touched) ">
+          {{error.message}}
+        </div>
+      </ng-container>
+    </div>
 
     <ion-item>
       <ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
@@ -95,10 +119,12 @@
          </ion-item>
 
 
-   &lt;!&ndash;      <ion-item>
+   &lt;!&ndash;
+         <ion-item>
              <ion-label>Fecha de nacimiento</ion-label>
              <ion-datetime [(ngModel)]="usuarioApp.fechaNacimiento" display-format="MMM DD, YYYY"></ion-datetime>
-         </ion-item>&ndash;&gt;
+         </ion-item>
+         &ndash;&gt;
 
 
      </ion-list>-->

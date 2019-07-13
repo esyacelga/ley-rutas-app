@@ -1,5 +1,8 @@
 export class RegistroMensajes {
     error_messages = {
+        'fechaNacimiento': [
+            {type: 'required', message: 'Fecha de nacimiento es requerido'}
+        ],
         'email': [
             {type: 'required', message: 'Email es requerido'},
             {type: 'minlength', message: 'Debe ser mayor o igual a 6 caracteres'},
@@ -18,7 +21,7 @@ export class RegistroMensajes {
 
         ],
         'primerNombre': [
-            {type: 'required', message: 'Primer nombre es requerido'},
+            {type: 'required', message: 'Los nombres son requerido'},
             {type: 'minlength', message: 'Debe ser mayor o igual a 6 caracteres'},
             {type: 'maxlength', message: 'Debe ser menor o igual a 30 caracteres'}
 
@@ -27,6 +30,12 @@ export class RegistroMensajes {
             {type: 'required', message: 'Primer apellido es requerido'},
             {type: 'minlength', message: 'Debe ser mayor o igual a 6 caracteres'},
             {type: 'maxlength', message: 'Debe ser menor o igual a 30 caracteres'}
+
+        ],
+        'identificacion': [
+            {type: 'required', message: 'La identificación o cédula es requrido'},
+            {type: 'minlength', message: 'Debe ser mayor a 10 caracteres'},
+            {type: 'maxlength', message: 'Debe ser menor o igual a 13 caracteres'}
 
         ],
     };
