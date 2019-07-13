@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UsuarioApp} from '../../../classes/UsuarioApp';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UsuarioService} from '../../../service/usuario.service';
+import {Platform} from '@ionic/angular';
 
 @Component({
     selector: 'app-password',
@@ -10,7 +13,12 @@ export class PasswordPage implements OnInit {
     user: UsuarioApp = null;
     parametro: string;
 
-    constructor() {
+    constructor(
+        private activateRoute: ActivatedRoute,
+        private usuarioSvc: UsuarioService,
+        private router: Router,
+        private platform: Platform,
+    ) {
 
     }
 
