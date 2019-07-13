@@ -12,6 +12,24 @@ export class Util {
         return builder.buildObject(json);
     };
 
+    modificarValoresBooleanos = function (lista, campo) {
+        if (lista) {
+            if (lista) {
+                for (let i = 0; i < lista.length; i++) {
+                    const valores = lista[i];
+                    for (const aux in valores) {
+                        if (aux === campo) {
+                            lista[i][aux] = this.toBoolean(lista[i][aux]);
+                        }
+                    }
+
+                }
+            }
+        }
+        return lista;
+
+    };
+
 
     private xmlToJsonFormat = function(xml) {
         const data = this.xmlToJson(xml);
