@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UsuarioApp} from '../../../classes/UsuarioApp';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UsuarioService} from '../../../service/usuario.service';
-import {Platform} from '@ionic/angular';
+import {Platform, ToastController} from '@ionic/angular';
 
 @Component({
     selector: 'app-password',
@@ -18,6 +18,7 @@ export class PasswordPage implements OnInit {
         private usuarioSvc: UsuarioService,
         private router: Router,
         private platform: Platform,
+        private notify: ToastController
     ) {
 
     }
