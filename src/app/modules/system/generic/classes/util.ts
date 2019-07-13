@@ -1,6 +1,7 @@
 import {Builder} from 'xml2js';
 import {Injectable} from '@angular/core';
 
+
 @Injectable({
     providedIn: 'root'
 })
@@ -9,16 +10,10 @@ export class Util {
     public toXML = function(json: any) {
         const builder = new Builder();
         return builder.buildObject(json);
-    }
-
-    private parseXml = function (data) {
-        let parser, xmlDoc;
-        parser = new DOMParser();
-        xmlDoc = parser.parseFromString(data, 'text/xml');
-        return xmlDoc;
     };
 
-    private xmlToJsonFormat = function (xml) {
+
+    private xmlToJsonFormat = function(xml) {
         const data = this.xmlToJson(xml);
         if (!data.root) {
             return null;
@@ -34,11 +29,7 @@ export class Util {
         }
     };
 
-    /**
-     * Convierte el resultado de un xml en un objeto json
-     * @param data
-     */
-    entidadDesdeXML = function (data) {
+    entidadDesdeXML = function(data) {
         if (!data || data == null) {
             return null;
         }
@@ -50,7 +41,7 @@ export class Util {
         return obj.root.entidad.row;
     };
 
-    public listaDesdeXML = function (data) {
+    public listaDesdeXML = function(data) {
         const parseXml = this.parseXml(data);
         const obj = this.xmlToJsonFormat(parseXml);
         if (!obj) {
@@ -97,5 +88,5 @@ export class Util {
     };
 
 
-
 }
+
