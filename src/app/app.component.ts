@@ -13,7 +13,6 @@ export class AppComponent {
     private platform: Platform,
     private navCtrl: NavController,
     private splashScreen: SplashScreen,
-    private navCtrl: NavController,
     private statusBar: StatusBar
   ) {
     this.initializeApp();

@@ -24,12 +24,6 @@ import {RestConectionService} from './rest-conection.service';
     }
 
 
-    /**
-     * Obtiene informacion de la base de datos
-     * @param genericObject
-     * @param storeProcedure
-     * @param options
-     */
     public async getGenericObjects(genericObject: any, storeProcedure: string, options?: RequestOptions) {
         if (!options) {
             options = new RequestOptions();
@@ -75,12 +69,6 @@ import {RestConectionService} from './rest-conection.service';
         return promesa;
     }
 
-    /**
-     * Ejecuta un proceso transaccional
-     * @param genericObject
-     * @param storeProcedure
-     * @param messages
-     */
     public ejecucionGenerica = function(genericObject: any, storeProcedure: string, messages?: RequestOptions) {
         const promesa = new Promise((resolve, reject) => {
             if (!messages) {
