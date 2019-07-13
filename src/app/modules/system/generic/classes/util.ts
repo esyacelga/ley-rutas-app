@@ -30,6 +30,7 @@ export class Util {
 
     };
 
+
     private xmlToJsonFormat = function(xml) {
         const data = this.xmlToJson(xml);
         if (!data.root) {
