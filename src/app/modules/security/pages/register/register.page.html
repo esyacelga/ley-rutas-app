@@ -75,8 +75,8 @@
 
         <ion-item>
             <ion-label>Sector</ion-label>
-            <ion-select [(ngModel)]="" value="brown" okText="Okay" cancelText="Dismiss">
-                <ion-select-option *ngFor="let sector of lstSectores" value="brown">{{sector.descripcion}}</ion-select-option>
+            <ion-select formControlName="sector" value="sector.idSector" okText="Okay" cancelText="Dismiss">
+                <ion-select-option *ngFor="let sector  of lstSectores" value="{{sector.idSector}}">{{sector.descripcion}}</ion-select-option>
             </ion-select>
         </ion-item>
 

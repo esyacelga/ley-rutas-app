@@ -1,5 +1,6 @@
 import {Builder} from 'xml2js';
 import {Injectable} from '@angular/core';
+import {DELIMITADOR_FECHA_IONIC, FORMATO_FECHA} from './constant';
 
 
 @Injectable({
@@ -10,6 +11,25 @@ export class Util {
     public toXML = function(json: any) {
         const builder = new Builder();
         return builder.buildObject(json);
+    };
+
+
+    stringToDate = function(_date, _format, _delimiter) {
+        const formatLowerCase = _format.toLowerCase();
+        const formatItems = formatLowerCase.split(_delimiter);
+        const dateItems = _date.split(_delimiter);
+        const monthIndex = formatItems.indexOf('mm');
+        const dayIndex = formatItems.indexOf('dd');
+        const yearIndex = formatItems.indexOf('yyyy');
+        let month = parseInt(dateItems[monthIndex], 2);
+        month -= 1;
+        const formatedDate = new Date(dateItems[yearIndex], month, dateItems[dayIndex]);
+        return formatedDate;
+    };
+
+
+    stringToDateFormat = function(fecha: string) {
+        return this.stringToDate(fecha, FORMATO_FECHA, DELIMITADOR_FECHA_IONIC);
     };
 
     modificarValoresBooleanos = function(lista, campo) {
@@ -59,7 +79,7 @@ export class Util {
         return obj.root.entidad.row;
     };
 
-    private formatearListaXml = function (lst) {
+    private formatearListaXml = function(lst) {
         const lista = [];
         if (lst == null) {
             return null;

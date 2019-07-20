@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {UsuarioApp} from '../../classes/UsuarioApp';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UsuarioService} from '../../service/usuario.service';
 import {Router} from '@angular/router';
 import {RegistroMensajes} from '../../classes/RegistroMensajes';
 import {Ruta} from '../../classes/Ruta';
+import {RegisterUser} from '../../classes/RegisterUser';
 
 @Component({
     selector: 'app-register',
@@ -14,7 +14,7 @@ import {Ruta} from '../../classes/Ruta';
 export class RegisterPage implements OnInit {
 
     lstSectores: Array<Ruta>;
-    usuarioApp: UsuarioApp = new UsuarioApp();
+    usuarioApp: RegisterUser = new RegisterUser();
     loginForm: FormGroup;
     registoMensajes: RegistroMensajes = new RegistroMensajes();
     error_messages = this.registoMensajes.error_messages;
@@ -41,6 +41,7 @@ export class RegisterPage implements OnInit {
                 Validators.maxLength(100)
             ])),
             segundoApellido: new FormControl('', null),
+            sector: new FormControl('', null),
             clave: new FormControl('', Validators.compose([
                 Validators.required,
                 Validators.minLength(6),
@@ -76,13 +77,14 @@ export class RegisterPage implements OnInit {
 
     async obtenerSectores() {
         // @ts-ignore
-        this.lstSectores =  await this.usuarioService.obtenerSectores();
+        this.lstSectores = await this.usuarioService.obtenerSectores();
         console.log(this.lstSectores);
     }
 
 
     registerNewUser() {
-        const usuarioApp = <UsuarioApp> this.loginForm.value;
+        const usuarioApp = <RegisterUser> this.loginForm.value;
+
         this.usuarioService.registrarUsuario(usuarioApp).then(respuesta => {
             this.router.navigate(['/signin']);
             console.log('');
