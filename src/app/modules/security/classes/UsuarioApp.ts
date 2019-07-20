@@ -1,4 +1,6 @@
-export class UsuarioApp {
+import {BaseClass} from '../../system/generic/classes/BaseClass';
+
+export class UsuarioApp extends BaseClass {
 
     public idUsuarioApp;
     public primerNombre: string;
@@ -11,7 +13,6 @@ export class UsuarioApp {
     public passwordValidator: string;
     public fechaNacimiento: string;
     public playerID: string;
-    public opcional: string;
     public sector: string;
 
 }

@@ -6,6 +6,7 @@ import {RequestOptions} from '../../system/generic/classes/RequestOptions';
 import {Util} from '../../system/generic/classes/util';
 import {ExecuteCallProcedureService} from '../../system/generic/service/execute-call-procedure.service';
 import {Ruta} from '../classes/Ruta';
+import {PROC_XML_REGISTRAR_USUARIO} from '../../system/generic/classes/ConstanteConsultas';
 
 @Injectable({
     providedIn: 'root'
@@ -35,18 +36,18 @@ export class UsuarioService {
     public registrarUsuario = function(usuario: UsuarioApp) {
         const requestOptions = new RequestOptions();
         requestOptions.restUrl = PROC_XML_REST_REGISTRO_USUARIO;
-        usuario.opcional = 'CREACION';
         usuario.fechaNacimiento = this.utils.stringToDateFormat(usuario.fechaNacimiento);
-        return null;// this.genericService.ejecucionGenerica(usuario, PROC_XML_REGISTRAR_USUARIO, requestOptions);
+        usuario.opcionBase = 'NUEVOUSUARIO';
+        return this.genericService.ejecucionGenerica(usuario, PROC_XML_REGISTRAR_USUARIO, requestOptions);
     };
 
     public actualizarUsuario = function(usuario: UsuarioApp) {
         const requestOptions = new RequestOptions();
         requestOptions.restUrl = PROC_XML_REST_REGISTRO_USUARIO;
-        usuario.opcional = 'ACTUALIZACION';
         console.log('Empieza la actualizacion');
         return null; //this.genericService.ejecucionGenerica(usuario, PROC_XML_REGISTRAR_USUARIO, requestOptions);
     };
+
 
 
     /**
