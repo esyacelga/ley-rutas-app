@@ -12,7 +12,7 @@ export class Util {
         return builder.buildObject(json);
     };
 
-    modificarValoresBooleanos = function (lista, campo) {
+    modificarValoresBooleanos = function(lista, campo) {
         if (lista) {
             if (lista) {
                 for (let i = 0; i < lista.length; i++) {
@@ -57,6 +57,23 @@ export class Util {
             return null;
         }
         return obj.root.entidad.row;
+    };
+
+    private formatearListaXml = function (lst) {
+        const lista = [];
+        if (lst == null) {
+            return null;
+        }
+        for (const entry of lst) {
+            lista.push(entry.row);
+        }
+        return lista;
+    };
+    private parseXml = function(data) {
+        let parser, xmlDoc;
+        parser = new DOMParser();
+        xmlDoc = parser.parseFromString(data, 'text/xml');
+        return xmlDoc;
     };
 
     public listaDesdeXML = function(data) {

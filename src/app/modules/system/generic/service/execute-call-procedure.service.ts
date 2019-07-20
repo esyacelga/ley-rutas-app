@@ -62,6 +62,8 @@ import {RestConectionService} from './rest-conection.service';
                 }
             }, async error => {
                 await this.loading.dismiss('messagesService.loadMessagesOverview');
+                console.log(error);
+                console.log(storeProcedure);
                 this.presentToast(options.errorMessage, COLOR_TOAST_ERROR);
                 reject(error);
             });
@@ -106,6 +108,8 @@ import {RestConectionService} from './rest-conection.service';
                     resolve(obj);
                 }
             }, error => {
+                console.log(error);
+                console.log(storeProcedure);
                 this.loading.dismiss('messagesService.loadMessagesOverview');
                 this.presentToast(messages.errorMessage, COLOR_TOAST_ERROR);
                 reject(error);

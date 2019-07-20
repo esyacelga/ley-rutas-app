@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {RequestDto} from '../classes/request-dto';
 import {URL_SERVICIOS} from '../classes/constant';
-import {Builder} from 'xml2js';
 import {HttpClient} from '@angular/common/http';
 import {Util} from '../classes/util';
 
@@ -15,7 +14,7 @@ export class RestConectionService {
 
 
     public procConsultaGenerica = function(genericObject: any, nombreSP: string, urlRestService: string) {
-        const data = this.utilitario.toXML(genericObject)
+        const data = this.utilitario.toXML(genericObject);
         const obj = new RequestDto();
         obj.valorXml = data;
         obj.storeProcedure = nombreSP;

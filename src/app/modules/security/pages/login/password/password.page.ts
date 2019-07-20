@@ -5,6 +5,7 @@ import {UsuarioService} from '../../../service/usuario.service';
 import {Platform, ToastController} from '@ionic/angular';
 import {Storage} from '@ionic/storage';
 import {DURATION_TOAST} from '../../../../system/generic/classes/constant';
+import {LoginStorageService} from '../../../service/LoginStorageService';
 
 @Component({
     selector: 'app-password',
@@ -21,6 +22,7 @@ export class PasswordPage implements OnInit {
         private router: Router,
         private platform: Platform,
         private storage: Storage,
+        private loginStorageSvc: LoginStorageService,
         private notify: ToastController
     ) {
 
@@ -37,10 +39,8 @@ export class PasswordPage implements OnInit {
     verifyUser(parameter) {
         if (this.user.clave === parameter) {
             this.usuarioSvc.setAuthenticated(true);
-            console.log('Usuario Obtenido');
-            console.log(JSON.stringify(this.user));
             this.usuarioSvc.setUsuario(this.user);
-            // this.loginStorageSvc.guardarStorage(this.user);
+            this.loginStorageSvc.guardarStorage(this.user);
             this.router.navigate(['/tabs']);
         } else {
             this.usuarioSvc.setAuthenticated(false);

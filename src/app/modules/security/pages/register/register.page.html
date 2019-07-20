@@ -1,133 +1,153 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/signin"></ion-back-button>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/signin"></ion-back-button>
 
-    </ion-buttons>
-    <div class="ion-text-end">
-      <ion-button ion-button color="primary" (click)="registerNewUser()">REGISTRAR</ion-button>
-    </div>
-    <!--<ion-title>Registro de nuevo usuario</ion-title>-->
-  </ion-toolbar>
+        </ion-buttons>
+        <div class="ion-text-end">
+            <ion-button ion-button color="primary" (click)="registerNewUser()">REGISTRAR</ion-button>
+        </div>
+        <!--<ion-title>Registro de nuevo usuario</ion-title>-->
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="loginForm" (ngSubmit)="registerNewUser()">
-    <ion-item>
-      <ion-label position="floating">Nombres</ion-label>
-      <ion-input formControlName="primerNombre"></ion-input>
-    </ion-item>
-    <div class="error-messages">
-      <ng-container *ngFor="let error of error_messages.primerNombre">
-        <div class="error-message"
-             *ngIf="loginForm.get('primerNombre').hasError(error.type) && (loginForm.get('primerNombre').dirty || loginForm.get('primerNombre').touched) ">
-          {{error.message}}
+    <form [formGroup]="loginForm" (ngSubmit)="registerNewUser()">
+        <ion-item>
+            <ion-label position="floating">Nombres</ion-label>
+            <ion-input formControlName="primerNombre"></ion-input>
+        </ion-item>
+        <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.primerNombre">
+                <div class="error-message"
+                     *ngIf="loginForm.get('primerNombre').hasError(error.type) && (loginForm.get('primerNombre').dirty || loginForm.get('primerNombre').touched) ">
+                    {{error.message}}
+                </div>
+            </ng-container>
         </div>
-      </ng-container>
-    </div>
 
 
+        <ion-item>
+            <ion-label position="floating">Primer apellido</ion-label>
+            <ion-input formControlName="primerApellido"></ion-input>
+        </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Primer apellido</ion-label>
-      <ion-input formControlName="primerApellido"></ion-input>
-    </ion-item>
-
-    <div class="error-messages">
-      <ng-container *ngFor="let error of error_messages.primerApellido">
-        <div class="error-message"
-             *ngIf="loginForm.get('primerApellido').hasError(error.type) && (loginForm.get('primerApellido').dirty || loginForm.get('primerApellido').touched) ">
-          {{error.message}}
+        <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.primerApellido">
+                <div class="error-message"
+                     *ngIf="loginForm.get('primerApellido').hasError(error.type) && (loginForm.get('primerApellido').dirty || loginForm.get('primerApellido').touched) ">
+                    {{error.message}}
+                </div>
+            </ng-container>
         </div>
-      </ng-container>
-    </div>
 
 
-    <ion-item>
-      <ion-label position="floating">Segundo apellido</ion-label>
-      <ion-input formControlName="segundoApellido"></ion-input>
-    </ion-item>
+        <ion-item>
+            <ion-label position="floating">Segundo apellido</ion-label>
+            <ion-input formControlName="segundoApellido"></ion-input>
+        </ion-item>
 
 
-    <ion-item>
-      <ion-label position="floating">Identificacion</ion-label>
-      <ion-input maxlength="13" formControlName="identificacion"></ion-input>
-    </ion-item>
-    <div class="error-messages">
-      <ng-container *ngFor="let error of error_messages.identificacion">
-        <div class="error-message"
-             *ngIf="loginForm.get('identificacion').hasError(error.type) && (loginForm.get('identificacion').dirty || loginForm.get('identificacion').touched) ">
-          {{error.message}}
+        <ion-item>
+            <ion-label position="floating">Identificacion</ion-label>
+            <ion-input maxlength="13" formControlName="identificacion"></ion-input>
+        </ion-item>
+        <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.identificacion">
+                <div class="error-message"
+                     *ngIf="loginForm.get('identificacion').hasError(error.type) && (loginForm.get('identificacion').dirty || loginForm.get('identificacion').touched) ">
+                    {{error.message}}
+                </div>
+            </ng-container>
         </div>
-      </ng-container>
-    </div>
-    <ion-item>
-      <ion-label>Fecha de nacimiento</ion-label>
-      <ion-datetime formControlName="fechaNacimiento" display-format="MMM DD, YYYY"></ion-datetime>
-    </ion-item>
-    <div class="error-messages">
-      <ng-container *ngFor="let error of error_messages.fechaNacimiento">
-        <div class="error-message"
-             *ngIf="loginForm.get('fechaNacimiento').hasError(error.type) && (loginForm.get('fechaNacimiento').dirty || loginForm.get('fechaNacimiento').touched) ">
-          {{error.message}}
+        <ion-item>
+            <ion-label>Fecha de nacimiento</ion-label>
+            <ion-datetime formControlName="fechaNacimiento" display-format="MMM DD, YYYY"></ion-datetime>
+        </ion-item>
+        <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.fechaNacimiento">
+                <div class="error-message"
+                     *ngIf="loginForm.get('fechaNacimiento').hasError(error.type) && (loginForm.get('fechaNacimiento').dirty || loginForm.get('fechaNacimiento').touched) ">
+                    {{error.message}}
+                </div>
+            </ng-container>
         </div>
-      </ng-container>
-    </div>
 
-    <ion-item>
-      <ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
-    </ion-item>
-    <div class="error-messages">
-      <ng-container *ngFor="let error of error_messages.email">
-        <div class="error-message"
-             *ngIf="loginForm.get('email').hasError(error.type) && (loginForm.get('email').dirty || loginForm.get('email').touched) ">
-          {{error.message}}
+        <ion-item>
+            <ion-label>Sector</ion-label>
+            <ion-select [(ngModel)]="" value="brown" okText="Okay" cancelText="Dismiss">
+                <ion-select-option *ngFor="let sector of lstSectores" value="brown">{{sector.descripcion}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <!--<ion-item>
+          <ion-label position="floating">Sector</ion-label>
+          <ion-input maxlength="13" formControlName="identificacion"></ion-input>
+        </ion-item>
+        <div class="error-messages">
+          <ng-container *ngFor="let error of error_messages.identificacion">
+            <div class="error-message"
+                 *ngIf="loginForm.get('identificacion').hasError(error.type) && (loginForm.get('identificacion').dirty || loginForm.get('identificacion').touched) ">
+              {{error.message}}
+            </div>
+          </ng-container>
+        </div>-->
+
+
+        <ion-item>
+            <ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
+        </ion-item>
+        <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.email">
+                <div class="error-message"
+                     *ngIf="loginForm.get('email').hasError(error.type) && (loginForm.get('email').dirty || loginForm.get('email').touched) ">
+                    {{error.message}}
+                </div>
+            </ng-container>
         </div>
-      </ng-container>
-    </div>
-    <ion-item>
-      <ion-input formControlName="clave" type="password" placeholder="Password"></ion-input>
-    </ion-item>
-    <div class="error-messages">
-      <ng-container *ngFor="let error of error_messages.clave">
-        <div class="error-message"
-             *ngIf="loginForm.get('clave').hasError(error.type) && (loginForm.get('clave').dirty || loginForm.get('clave').touched) ">
-          {{error.message}}
+        <ion-item>
+            <ion-input formControlName="clave" type="password" placeholder="Password"></ion-input>
+        </ion-item>
+        <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.clave">
+                <div class="error-message"
+                     *ngIf="loginForm.get('clave').hasError(error.type) && (loginForm.get('clave').dirty || loginForm.get('clave').touched) ">
+                    {{error.message}}
+                </div>
+            </ng-container>
         </div>
-      </ng-container>
-    </div>
 
-    <ion-item>
-      <ion-input formControlName="passwordValidator" type="password" placeholder="Password"></ion-input>
-    </ion-item>
-    <div class="error-messages" *ngIf="loginForm.errors?.sonIguales && !loginForm.pristine">
-      <ng-container>
-        <div class="error-message">
-          Las contraseñas deben ser iguales
+        <ion-item>
+            <ion-input formControlName="passwordValidator" type="password" placeholder="Password"></ion-input>
+        </ion-item>
+        <div class="error-messages" *ngIf="loginForm.errors?.sonIguales && !loginForm.pristine">
+            <ng-container>
+                <div class="error-message">
+                    Las contraseñas deben ser iguales
+                </div>
+            </ng-container>
         </div>
-      </ng-container>
-    </div>
-    <!--   <ion-button [disabled]="!loginForm.valid" shape="round" size="default" color="primary" expand="block"
-                   (click)="registerNewUser(usuarioApp)">Login
-       </ion-button>-->
-  </form>
-  <!--   <ion-list>
+        <!--   <ion-button [disabled]="!loginForm.valid" shape="round" size="default" color="primary" expand="block"
+                       (click)="registerNewUser(usuarioApp)">Login
+           </ion-button>-->
+    </form>
+    <!--   <ion-list>
 
-         <ion-item>
-             <ion-label position="floating">Cédula</ion-label>
-             <ion-input [(ngModel)]="usuarioApp.cedula"></ion-input>
-         </ion-item>
+           <ion-item>
+               <ion-label position="floating">Cédula</ion-label>
+               <ion-input [(ngModel)]="usuarioApp.cedula"></ion-input>
+           </ion-item>
 
 
-   &lt;!&ndash;
-         <ion-item>
-             <ion-label>Fecha de nacimiento</ion-label>
-             <ion-datetime [(ngModel)]="usuarioApp.fechaNacimiento" display-format="MMM DD, YYYY"></ion-datetime>
-         </ion-item>
-         &ndash;&gt;
+     &lt;!&ndash;
+           <ion-item>
+               <ion-label>Fecha de nacimiento</ion-label>
+               <ion-datetime [(ngModel)]="usuarioApp.fechaNacimiento" display-format="MMM DD, YYYY"></ion-datetime>
+           </ion-item>
+           &ndash;&gt;
 
 
-     </ion-list>-->
+       </ion-list>-->
 
 
 </ion-content>
