@@ -36,6 +36,7 @@ export class UsuarioService {
         const requestOptions = new RequestOptions();
         requestOptions.restUrl = PROC_XML_REST_REGISTRO_USUARIO;
         usuario.opcional = 'CREACION';
+        usuario.fechaNacimiento = this.utils.stringToDateFormat(usuario.fechaNacimiento);
         return null;// this.genericService.ejecucionGenerica(usuario, PROC_XML_REGISTRAR_USUARIO, requestOptions);
     };
 

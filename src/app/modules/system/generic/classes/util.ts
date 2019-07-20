@@ -1,6 +1,5 @@
 import {Builder} from 'xml2js';
 import {Injectable} from '@angular/core';
-import {DELIMITADOR_FECHA_IONIC, FORMATO_FECHA} from './constant';
 
 
 @Injectable({
@@ -28,9 +27,24 @@ export class Util {
     };
 
 
-    stringToDateFormat = function(fecha: string) {
-        return this.stringToDate(fecha, FORMATO_FECHA, DELIMITADOR_FECHA_IONIC);
+    stringToDateFormat = function(fecha: string): String {
+        const newDate = new Date(fecha);
+        return this.formatoFecha(newDate);
     };
+
+    formatoFecha = function(fecha): string {
+        if (!fecha) {
+            return this.formatoFecha(new Date());
+        }
+        const mm = fecha.getMonth() + 1; // getMonth() is zero-based
+        const dd = fecha.getDate();
+        return [
+            (dd > 9 ? '' : '0') + dd,
+            (mm > 9 ? '' : '0') + mm,
+            fecha.getFullYear()
+        ].join('/');
+    };
+
 
     modificarValoresBooleanos = function(lista, campo) {
         if (lista) {

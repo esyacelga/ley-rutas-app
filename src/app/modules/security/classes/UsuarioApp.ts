@@ -9,8 +9,9 @@ export class UsuarioApp {
     public clave: string;
     public correo: string;
     public passwordValidator: string;
-    public fechaNacimiento: Date;
+    public fechaNacimiento: string;
     public playerID: string;
     public opcional: string;
+    public sector: string;
 
 }

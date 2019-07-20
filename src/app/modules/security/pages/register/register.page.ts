@@ -4,7 +4,7 @@ import {UsuarioService} from '../../service/usuario.service';
 import {Router} from '@angular/router';
 import {RegistroMensajes} from '../../classes/RegistroMensajes';
 import {Ruta} from '../../classes/Ruta';
-import {RegisterUser} from '../../classes/RegisterUser';
+import {UsuarioApp} from '../../classes/UsuarioApp';
 
 @Component({
     selector: 'app-register',
@@ -14,7 +14,7 @@ import {RegisterUser} from '../../classes/RegisterUser';
 export class RegisterPage implements OnInit {
 
     lstSectores: Array<Ruta>;
-    usuarioApp: RegisterUser = new RegisterUser();
+    usuarioApp: UsuarioApp = new UsuarioApp();
     loginForm: FormGroup;
     registoMensajes: RegistroMensajes = new RegistroMensajes();
     error_messages = this.registoMensajes.error_messages;
@@ -83,7 +83,7 @@ export class RegisterPage implements OnInit {
 
 
     registerNewUser() {
-        const usuarioApp = <RegisterUser> this.loginForm.value;
+        const usuarioApp = <UsuarioApp> this.loginForm.value;
 
         this.usuarioService.registrarUsuario(usuarioApp).then(respuesta => {
             this.router.navigate(['/signin']);

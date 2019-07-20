@@ -2,7 +2,7 @@ export const URL_SERVICIOS = 'http://localhost:8080/siisspol-web';
 
 
 export const FORMATO_FECHA = 'dd/MM/yyyy';
-export const DELIMITADOR_FECHA_IONIC = '/';
+export const DELIMITADOR_FECHA_IONIC = '-';
 
 export const SUCCESS_MESSAGE = 'Proceso ejecutado exitosamente';
 export const ERROR_MESSAGE = 'Hubo un problema en la aplicación, por favor espere, estamos solucionando este problema';
