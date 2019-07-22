@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {UsuarioApp} from '../classes/UsuarioApp';
-import {PROC_XML_CONSULTAS_APP, PROC_XML_REST_REGISTRO_USUARIO} from '../../system/generic/classes/constant';
+import {PROC_XML_CONSULTAS_APP, PROC_XML_REST_GENERICO} from '../../system/generic/classes/constant';
 import {UsuarioServidor} from '../classes/UsuarioServidor';
 import {RequestOptions} from '../../system/generic/classes/RequestOptions';
 import {Util} from '../../system/generic/classes/util';
 import {ExecuteCallProcedureService} from '../../system/generic/service/execute-call-procedure.service';
 import {Ruta} from '../classes/Ruta';
-import {PROC_XML_REGISTRAR_USUARIO} from '../../system/generic/classes/ConstanteConsultas';
+import {PROC_XML_REGISTRAR_USUARIO_PERSONA} from '../../system/generic/classes/ContanteTransaccional';
 
 @Injectable({
     providedIn: 'root'
@@ -33,21 +33,21 @@ export class UsuarioService {
     public setAuthenticated = function(valor: Boolean) {
         this.authState = valor;
     };
+
+
     public registrarUsuario = function(usuario: UsuarioApp) {
         const requestOptions = new RequestOptions();
-        requestOptions.restUrl = PROC_XML_REST_REGISTRO_USUARIO;
+        requestOptions.restUrl = PROC_XML_REST_GENERICO;
         usuario.fechaNacimiento = this.utils.stringToDateFormat(usuario.fechaNacimiento);
-        usuario.opcionBase = 'NUEVOUSUARIO';
-        return this.genericService.ejecucionGenerica(usuario, PROC_XML_REGISTRAR_USUARIO, requestOptions);
+        return this.genericService.ejecucionGenerica(usuario, PROC_XML_REGISTRAR_USUARIO_PERSONA, requestOptions);
     };
 
     public actualizarUsuario = function(usuario: UsuarioApp) {
         const requestOptions = new RequestOptions();
-        requestOptions.restUrl = PROC_XML_REST_REGISTRO_USUARIO;
+        requestOptions.restUrl = PROC_XML_REST_GENERICO;
         console.log('Empieza la actualizacion');
         return null; //this.genericService.ejecucionGenerica(usuario, PROC_XML_REGISTRAR_USUARIO, requestOptions);
     };
-
 
 
     /**

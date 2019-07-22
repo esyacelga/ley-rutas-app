@@ -74,10 +74,20 @@
         </div>
 
         <ion-item>
-            <ion-label>Sector</ion-label>
+            <ion-label>Sector de domicilio</ion-label>
             <ion-select formControlName="sector" value="sector.idSector" okText="Okay" cancelText="Dismiss">
                 <ion-select-option *ngFor="let sector  of lstSectores" value="{{sector.idSector}}">{{sector.descripcion}}</ion-select-option>
             </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">Calle Principal</ion-label>
+            <ion-input formControlName="callePrincipal"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">Calle Secundaria</ion-label>
+            <ion-input formControlName="calleSecundaria"></ion-input>
         </ion-item>
 
         <!--<ion-item>

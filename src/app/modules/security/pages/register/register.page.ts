@@ -35,6 +35,14 @@ export class RegisterPage implements OnInit {
                 Validators.minLength(10),
                 Validators.maxLength(13)
             ])),
+            callePrincipal: new FormControl('', Validators.compose([
+                Validators.minLength(2),
+                Validators.maxLength(100)
+            ])),
+            calleSecundaria: new FormControl('', Validators.compose([
+                Validators.minLength(2),
+                Validators.maxLength(100)
+            ])),
             primerApellido: new FormControl('', Validators.compose([
                 Validators.required,
                 Validators.minLength(2),
