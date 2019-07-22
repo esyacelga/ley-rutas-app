@@ -14,6 +14,7 @@ CREATE TABLE [dbo].[persona](
 	[apellido_paterno] [varchar](100) NULL,
 	[apellido_materno] [varchar](100) NULL,
 	[identificacion] [varchar](100) not NULL,
+	[fecha_nacimiento] date not null,
 	[telefono]		 [varchar](100) NULL,
 	[celular]        [varchar](100) NULL,
 	[correo]         [varchar](100) NULL,

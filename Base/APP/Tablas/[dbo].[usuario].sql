@@ -1,6 +1,6 @@
 USE [siisspolwebresp]
 GO
-
+--drop table [dbo].[usuario]
 /****** Object:  Table [pmedicas].[prestador]    Script Date: 11/07/2019 16:35:13 ******/
 SET ANSI_NULLS ON
 GO
@@ -10,6 +10,7 @@ GO
 
 CREATE TABLE [dbo].[usuario](
 	[id_usuario] [int] IDENTITY(1,1) NOT NULL,
+	[id_tipo_usuario_persona] [int] not NULL,
 	[contrasenia]      [varchar](100) NULL,
 	[player_id]		   [varchar](100) NULL,
 	[estado]		   bit,
@@ -32,4 +33,12 @@ GO
 ALTER TABLE [dbo].[usuario] ADD  DEFAULT ((1)) FOR [estado]
 GO
 
+
+ALTER TABLE [dbo].[usuario]  WITH CHECK ADD  CONSTRAINT [FK_usuario_persona_usuario] FOREIGN KEY([id_tipo_usuario_persona])
+REFERENCES [dbo].[tipo_usuario_persona]([id_tipo_usuario_persona])
+GO
+
+
+ALTER TABLE [dbo].[usuario] CHECK CONSTRAINT [FK_usuario_persona_usuario]
+GO
 

@@ -1,6 +1,7 @@
 USE [siisspolwebresp]
 GO
 
+--drop table [dbo].[direccion]
 /****** Object:  Table [pmedicas].[prestador_convenio]    Script Date: 11/07/2019 17:22:19 ******/
 SET ANSI_NULLS ON
 GO
@@ -12,8 +13,8 @@ CREATE TABLE [dbo].[direccion](
 	[id_direccion] [int] IDENTITY(1,1) NOT NULL,
 	[id_persona] [int] not NULL,
 	[id_sector] [int] not NULL,
-	[calle_principal] [int] NULL,
-	[calle_secundaria] [int] NULL,
+	[calle_principal] [varchar](100) ,
+	[calle_secundaria] [varchar](100) ,
 	[estado] [bit] NULL,
 	[creacion_usuario] [varchar](20) NOT NULL,
 	[creacion_fecha] [datetime] NOT NULL,
