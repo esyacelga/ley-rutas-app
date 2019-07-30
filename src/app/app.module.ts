@@ -9,6 +9,8 @@ import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {RestConectionModule} from './modules/system/generic/rest-conection/rest-conection.module';
+import {ImagePicker} from '@ionic-native/image-picker/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
 
 @NgModule({
     declarations: [AppComponent],
@@ -16,10 +18,14 @@ import {RestConectionModule} from './modules/system/generic/rest-conection/rest-
     imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, RestConectionModule],
     providers: [
         StatusBar,
+        Camera,
         SplashScreen,
+        ImagePicker,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
     ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
+
+
 }
