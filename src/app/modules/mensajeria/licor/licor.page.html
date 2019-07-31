@@ -1,6 +1,11 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Nuevo Licor</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/signin"></ion-back-button>
+    </ion-buttons>
+    <div class="ion-text-end">
+      <ion-button ion-button color="primary" (click)="registrar(objLicor)">GUARDAR</ion-button>
+    </div>
   </ion-toolbar>
 </ion-header>
 
@@ -11,7 +16,6 @@
       <ion-label position="floating">Descripcion</ion-label>
       <ion-input [(ngModel)]="objLicor.descripcion"></ion-input>
     </ion-item>
-    <pre>{{objLicor|json}}</pre>
     <ion-item >
       <ion-label position="floating">Costo</ion-label>
       <ion-input type="number"[(ngModel)]="objLicor.costo"></ion-input>

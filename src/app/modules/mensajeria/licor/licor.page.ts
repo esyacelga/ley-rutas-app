@@ -3,6 +3,8 @@ import {ImagePickerOptions} from '@ionic-native/image-picker';
 import {ImagePicker} from '@ionic-native/image-picker/ngx';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {Licor} from '../classes/Licor';
+import {LicorClientService} from '../services/licor-client.service';
+import {TipoLicor} from '../classes/TipoLicor';
 
 @Component({
     selector: 'app-licor',
@@ -11,17 +13,33 @@ import {Licor} from '../classes/Licor';
 })
 export class LicorPage implements OnInit {
 
-
-    objLicor: Licor = null;
-
-    descripcion = '';
+    lstTipoLicor: Array<TipoLicor> = [];
+    objLicor: Licor = new Licor();
     imagenPreview = '';
     imagen64: string;
 
-    constructor(private imagePicker: ImagePicker, private camera: Camera) {
+    constructor(private imagePicker: ImagePicker, private camera: Camera, private clienteLicor: LicorClientService) {
+
+    }
+
+    async obtenerTipoLicor() {
+        // @ts-ignore
+        this.lstTipoLicor = await this.clienteLicor.obtenerTipoLicor();
+        console.log(this.lstTipoLicor);
+    }
+
+
+    async registrar(obj: Licor) {
+        // @ts-ignore
+        const data: Licor;
+        // @ts-ignore
+        data = await this.clienteLicor.registarlicor(obj);
+        console.log(data);
+
     }
 
     ngOnInit() {
+        this.obtenerTipoLicor();
     }
 
 
@@ -47,7 +65,6 @@ export class LicorPage implements OnInit {
     }
 
     seleccionarImagen() {
-
         const opciones: ImagePickerOptions = {
             quality: 70,
             outputType: 1,

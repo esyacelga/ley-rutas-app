@@ -57,9 +57,11 @@ begin
   declare @LI_ID_INTANCIA int, @LI_ID_TRAMITE INT, @LI_ID_LOTE INT, @LI_ID_CIUDAD_PRESTADOR INT
   DECLARE @LI_PROCESO INT, @LS_ID_PRESTADOR VARCHAR(100)
   DECLARE @LS_USUARIO VARCHAR(20), @LS_EQUIPO VARCHAR(20), @LS_NUMERO_TRAMITE VARCHAR(100)
+		  ,@ls_opcion_base varchar(100)
     
 	select 
 			@LS_TIPO_CONSULTA = isnull( x.v.value('tipoConsulta[1]', 'varchar(100)'), '0'),
+			@ls_opcion_base = isnull( x.v.value('opcionBase[1]', 'varchar(100)'), '0'),
 			@LI_ID_TRAMITE = isnull( x.v.value('idTramite[1]', 'int'), '0'),	
 	     	@LI_ID_INTANCIA = isnull( x.v.value('idInstancia[1]', 'int'), '0')
 	FROM @XMLOBJ.nodes('/root') x(v)
@@ -84,7 +86,27 @@ begin
 						SELECT ID_SECTOR as idSector, DESCRIPCION as descripcion FROM dbo.SECTOR
 					'
 	end
+
+	if 'TIPOLECTOR'=(@LS_TIPO_CONSULTA)
+	BEGIN
+
+	set @AS_SQLOPCION = 
+		           '
+						select id_tipo_licor idTipoLicor, decripcion 
+						from dbo.tipo_licor	
+
+					'
+	end
+
 	
+	if 'REGISTRARLICOR'=(@LS_TIPO_CONSULTA)
+	BEGIN
+
+		 set @AS_SQLOPCION = 
+		           '
+						SELECT ID_SECTOR as idSector, DESCRIPCION as descripcion FROM dbo.SECTOR
+					'
+	end
 
 		
 
