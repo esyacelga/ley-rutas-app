@@ -8,10 +8,9 @@ import {StatusBar} from '@ionic-native/status-bar/ngx';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
-import {RestConectionModule} from './modules/system/generic/rest-conection/rest-conection.module';
 import {ImagePicker} from '@ionic-native/image-picker/ngx';
-import { Camera } from '@ionic-native/camera/ngx';
+import {RestConectionModule} from './modules/system/generic/rest-conection/rest-conection.module';
+import {Camera} from '@ionic-native/camera/ngx';
 
 @NgModule({
     declarations: [AppComponent],
