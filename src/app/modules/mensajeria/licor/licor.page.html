@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nuevo Licor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list >
+    <ion-item >
+      <ion-label position="floating">Descripcion</ion-label>
+      <ion-input [(ngModel)]="objLicor.descripcion"></ion-input>
+    </ion-item>
+    <pre>{{objLicor|json}}</pre>
+    <ion-item >
+      <ion-label position="floating">Costo</ion-label>
+      <ion-input type="number"[(ngModel)]="objLicor.costo"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="imagenPreview">
+      <img [src]="imagenPreview">
+    </ion-item>
+
+  </ion-list>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" (click)="seleccionarImagen()">
+          <ion-icon slot="start" name="photos"></ion-icon>
+          Seleccionar</ion-button>
+      </ion-col>
+      <ion-col>
+
+        <ion-button expand="block" (click)="capturarImagen()">
+          <ion-icon slot="start" name="camera"></ion-icon>
+          Capturar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+</ion-content>

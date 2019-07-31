@@ -10,6 +10,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import {RestConectionModule} from './modules/system/generic/rest-conection/rest-conection.module';
+import {ImagePicker} from '@ionic-native/image-picker/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
 
 @NgModule({
     declarations: [AppComponent],
@@ -17,6 +19,7 @@ import {RestConectionModule} from './modules/system/generic/rest-conection/rest-
     imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, RestConectionModule],
     providers: [
         StatusBar,
+        Camera,
         SplashScreen,
         ImagePicker,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
@@ -24,4 +27,6 @@ import {RestConectionModule} from './modules/system/generic/rest-conection/rest-
     bootstrap: [AppComponent]
 })
 export class AppModule {
+
+
 }
