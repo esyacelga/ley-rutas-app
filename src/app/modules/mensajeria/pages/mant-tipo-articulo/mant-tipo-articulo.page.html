@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar color="primary">
-
+        <ion-title>Tipo articulo</ion-title>
         <ion-button ion-button color="primary"
                     slot="start"
                     *ngIf="!objTipoArticulo"
@@ -43,7 +43,7 @@
                 <ion-item-option color="tertiary" (click)="objTipoArticulo=item">
                     <ion-icon slot="icon-only" ios="ios-list-box" md="md-list-box"></ion-icon>
                 </ion-item-option>
-                <ion-item-option color="danger"  (click)="objTipoArticulo=item">
+                <ion-item-option color="danger" (click)="eliminarTipoArticulo(item)">
                     <ion-icon slot="icon-only" name="trash"></ion-icon>
                 </ion-item-option>
             </ion-item-options>

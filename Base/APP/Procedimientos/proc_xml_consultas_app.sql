@@ -38,7 +38,7 @@ SALIDA
 	02/07/2017	  santiago.yacelga			Creación
 
 *******************************************************************/
-CREATE PROCEDURE dbo.proc_xml_consultas_app
+CREATE PROCEDURE [dbo].[proc_xml_consultas_app]
 @XMLVARCHAR VARCHAR(MAX),
 @XMLADUITORIAVARCHAR VARCHAR(MAX),
 @AS_XML VARCHAR(MAX) OUTPUT,
@@ -75,6 +75,7 @@ begin
 		SET @AS_MSJ = 'No se ha enviado el parametro de consulta'
 		RETURN 0
 	END
+	
 
 
 		
@@ -86,7 +87,7 @@ begin
 						SELECT ID_SECTOR as idSector, DESCRIPCION as descripcion FROM dbo.SECTOR
 					'
 	end
-		
+
 	if 'TIPOLECTOR'=(@LS_TIPO_CONSULTA)
 	BEGIN
 
@@ -108,7 +109,19 @@ begin
 					'
 	end
 
-		
+
+	if 'TIPOARTICULO'=(@LS_TIPO_CONSULTA)
+	BEGIN
+
+		 set @AS_SQLOPCION = 
+		           '
+								select id_tipo_articulo idTipoArticulo, descripcion, codigo
+								from dbo.tipo_articulo where estado = 1
+
+					'
+					
+	end
+
 
 	
 	set @AS_MSJ = ''
@@ -117,4 +130,4 @@ begin
 
 
 	return 1
-end  
+end 
