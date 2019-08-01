@@ -3,11 +3,13 @@ import {RequestOptions} from '../../system/generic/classes/RequestOptions';
 import {ExecuteCallProcedureService} from '../../system/generic/service/execute-call-procedure.service';
 import {TipoArticulo} from '../classes/tipo-articulo';
 import {PROC_XML_CRUD_TIPO_ARTICULO} from '../../system/generic/classes/ContanteTransaccional';
+import {PROC_XML_CONSULTAS_APP} from '../../system/generic/classes/constant';
 
 @Injectable({
     providedIn: 'root'
 })
 export class TipoArticuloClientService {
+
 
     constructor(private genericService: ExecuteCallProcedureService) {
     }
@@ -18,5 +20,15 @@ export class TipoArticuloClientService {
     }
 
 
+    async obtenerTipoArticulos() {
+        const requestOptions = new RequestOptions();
+        const objConsulta = {
+            tipoConsulta: 'TIPOARTICULO',
+            data: '0'
+        };
+        if (objConsulta) {
+            return await this.genericService.getGenericObjects(objConsulta, PROC_XML_CONSULTAS_APP, requestOptions);
+        }
+    }
 
 }

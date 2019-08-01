@@ -8,18 +8,32 @@ import {TipoArticuloClientService} from '../../services/tipo-articulo-client.ser
     styleUrls: ['./mant-tipo-articulo.page.scss'],
 })
 export class MantTipoArticuloPage implements OnInit {
-    objTipoArticulo: TipoArticulo = new TipoArticulo();
+    objTipoArticulo: TipoArticulo;
+    lstTipoArticulos: Array<TipoArticulo>;
 
     constructor(private srvTipoArticulo: TipoArticuloClientService) {
 
     }
 
+
+    crearNuevo() {
+        this.objTipoArticulo = new TipoArticulo();
+    }
+
+    async obtnerTipoArticulo() {
+        // @ts-ignore
+        this.lstTipoArticulos = await this.srvTipoArticulo.obtenerTipoArticulos();
+        console.log(this.lstTipoArticulos);
+    }
+
     ngOnInit() {
+        this.obtnerTipoArticulo();
     }
 
     async registrarTipoArticulo(objTipoArticulo: TipoArticulo) {
         this.srvTipoArticulo.registarTipoArticulo(objTipoArticulo);
 
     }
+
 
 }
