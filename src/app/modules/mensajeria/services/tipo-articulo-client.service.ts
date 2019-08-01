@@ -14,7 +14,9 @@ export class TipoArticuloClientService {
 
     async registarTipoArticulo(tipoArticulo: TipoArticulo) {
         const requestOptions = new RequestOptions();
-        return <TipoArticulo> await this.genericService.getGenericObjects(tipoArticulo, PROC_XML_CRUD_TIPO_ARTICULO, requestOptions);
+        return <TipoArticulo> await this.genericService.ejecucionGenerica(tipoArticulo, PROC_XML_CRUD_TIPO_ARTICULO, requestOptions);
     }
+
+
 
 }

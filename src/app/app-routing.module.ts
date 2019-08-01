@@ -14,7 +14,8 @@ const routes: Routes = [
     {
         path: 'mant-tipo-articulo-segmento',
         loadChildren: './modules/mensajeria/pages/mant-tipo-articulo-segmento/mant-tipo-articulo-segmento.module#MantTipoArticuloSegmentoPageModule'
-    }
+    },  { path: 'mant-articulo', loadChildren: './modules/mensajeria/pages/mant-articulo/mant-articulo.module#MantArticuloPageModule' }
+
 
 ];
 

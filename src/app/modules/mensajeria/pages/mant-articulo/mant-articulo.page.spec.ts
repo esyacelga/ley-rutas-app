@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MantTipoArticuloPage } from './mant-tipo-articulo.page';
+import { MantArticuloPage } from './mant-articulo.page';
 
-describe('MantTipoArticuloPage', () => {
-  let component: MantTipoArticuloPage;
-  let fixture: ComponentFixture<MantTipoArticuloPage>;
+describe('MantArticuloPage', () => {
+  let component: MantArticuloPage;
+  let fixture: ComponentFixture<MantArticuloPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MantTipoArticuloPage ],
+      declarations: [ MantArticuloPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MantTipoArticuloPage);
+    fixture = TestBed.createComponent(MantArticuloPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

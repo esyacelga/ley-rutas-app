@@ -86,7 +86,7 @@ begin
 						SELECT ID_SECTOR as idSector, DESCRIPCION as descripcion FROM dbo.SECTOR
 					'
 	end
-
+		
 	if 'TIPOLECTOR'=(@LS_TIPO_CONSULTA)
 	BEGIN
 

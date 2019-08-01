@@ -1,9 +1,52 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>mant-tipo-articulo</ion-title>
+  <ion-toolbar color="primary">
+    <div class="ion-text-end">
+      <ion-button ion-button color="primary" (click)="registrarTipoArticulo(objTipoArticulo)">GUARDAR</ion-button>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list >
+    <ion-item >
+      <ion-label position="floating">Descripcion</ion-label>
+      <ion-input [(ngModel)]="objTipoArticulo.descripcion"></ion-input>
+    </ion-item>
+    <ion-item >
+      <ion-label position="floating">Codigo</ion-label>
+      <ion-input type="number"[(ngModel)]="objTipoArticulo.codigo"></ion-input>
+    </ion-item>
+  </ion-list>
 
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div>
+          1 of 2
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          2 of 2
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div>
+          1 of 3
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          2 of 3
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          3 of 3
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
