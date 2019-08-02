@@ -34,6 +34,7 @@ export class MantTipoArticuloSegmentoPage implements OnInit {
     async obtenerTipoArticuloTodos() {
         // @ts-ignore
         this.lstTipoArticulos = await this.svcTipoArticulo.obtenerTipoArticulos();
+        console.log(this.lstTipoArticulos);
     }
 
 

@@ -100,6 +100,18 @@ begin
 	end
 
 	
+	if 'TIPOARTICULO'=(@LS_TIPO_CONSULTA)
+	BEGIN
+
+		 set @AS_SQLOPCION = 
+		           '
+								select id_tipo_articulo idTipoArticulo, descripcion, codigo
+								from dbo.tipo_articulo where estado = 1
+
+					'
+					
+	end
+	
 	if 'REGISTRARLICOR'=(@LS_TIPO_CONSULTA)
 	BEGIN
 
