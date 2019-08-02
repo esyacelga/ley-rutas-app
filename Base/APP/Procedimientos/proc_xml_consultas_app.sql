@@ -110,14 +110,16 @@ begin
 	end
 
 
-	if 'TIPOARTICULO'=(@LS_TIPO_CONSULTA)
+	if 'TIPOSEGMENTO'=(@LS_TIPO_CONSULTA)
 	BEGIN
 
 		 set @AS_SQLOPCION = 
 		           '
-								select id_tipo_articulo idTipoArticulo, descripcion, codigo
-								from dbo.tipo_articulo where estado = 1
-
+						select id_tipo_articulo_segmento idTipoArticuloSegmento, id_tipo_articulo idTipoArticulo 
+						,descripcion
+						from dbo.tipo_articulo_segmento
+						where estado=1
+	
 					'
 					
 	end

@@ -11,6 +11,7 @@ import {ArticuloSegmentoClientService} from '../../services/articulo-segmento-cl
 })
 export class MantTipoArticuloSegmentoPage implements OnInit {
     segmentoArticulo: ArticuloSegmento;
+    lstSegmento: Array<ArticuloSegmento>;
     lstTipoArticulos: Array<TipoArticulo>;
 
     constructor(private svcTipoArticulo: TipoArticuloClientService, private svcArticuloSegmento: ArticuloSegmentoClientService) {
@@ -18,6 +19,7 @@ export class MantTipoArticuloSegmentoPage implements OnInit {
 
     ngOnInit() {
         this.obtenerTipoArticuloTodos();
+        this.obtenerSegmentos();
     }
 
     crearNuevo() {
@@ -34,5 +36,15 @@ export class MantTipoArticuloSegmentoPage implements OnInit {
         this.lstTipoArticulos = await this.svcTipoArticulo.obtenerTipoArticulos();
     }
 
+
+    async obtenerSegmentos() {
+        // @ts-ignore
+        this.lstSegmento = await this.svcArticuloSegmento.obtenerSegmentos();
+    }
+
+    async eliminar(articuloSegmento: ArticuloSegmento) {
+        articuloSegmento.estado = 0;
+        this.registrarNuevo(articuloSegmento);
+    }
 
 }

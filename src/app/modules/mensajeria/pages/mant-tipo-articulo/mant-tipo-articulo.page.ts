@@ -33,7 +33,6 @@ export class MantTipoArticuloPage implements OnInit {
     async eliminarTipoArticulo(objTipoArticulo: TipoArticulo) {
         objTipoArticulo.estado = 0;
         this.registrarTipoArticulo(objTipoArticulo);
-
     }
 
     async registrarTipoArticulo(objTipoArticulo: TipoArticulo) {
