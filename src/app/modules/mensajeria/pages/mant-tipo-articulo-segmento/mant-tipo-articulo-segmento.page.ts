@@ -28,7 +28,8 @@ export class MantTipoArticuloSegmentoPage implements OnInit {
 
     async registrarNuevo(objGuardar: ArticuloSegmento) {
         // @ts-ignore
-        this.svcArticuloSegmento = await this.svcArticuloSegmento.registarTipoArticuloSegmento(objGuardar);
+        await this.svcArticuloSegmento.registarTipoArticuloSegmento(objGuardar);
+        this.segmentoArticulo = null;
     }
 
     async obtenerTipoArticuloTodos() {
@@ -46,6 +47,7 @@ export class MantTipoArticuloSegmentoPage implements OnInit {
     async eliminar(articuloSegmento: ArticuloSegmento) {
         articuloSegmento.estado = 0;
         this.registrarNuevo(articuloSegmento);
+        this.segmentoArticulo = null;
     }
 
 }
