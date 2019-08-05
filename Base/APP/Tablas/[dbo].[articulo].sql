@@ -11,10 +11,11 @@ GO
 
 CREATE TABLE [dbo].[articulo](
 	[id_articulo] [int] IDENTITY(1,1) NOT NULL,
-	[id_tipo_articuki] [int] NOT NULL,
+	[id_tipo_articulo_segmento] int not null,
 	[descripcion] [varchar](100) NULL,
+	[cantidad] int NULL,
+	[precio] money null,
 	[foto] [image] NULL,
-	[costo] [money] NULL,
 	[estado] [bit] NULL,
 	[creacion_usuario] [varchar](20) NOT NULL,
 	[creacion_fecha] [datetime] NOT NULL,
@@ -22,24 +23,24 @@ CREATE TABLE [dbo].[articulo](
 	[modifica_usuario] [varchar](20) NOT NULL,
 	[modifica_fecha] [datetime] NOT NULL,
 	[modifica_equipo] [varchar](20) NOT NULL,
- CONSTRAINT [PK_licor] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_tid_articulo] PRIMARY KEY CLUSTERED 
 (
 	[id_articulo] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+) ON [PRIMARY] 
 GO
 
 ALTER TABLE [dbo].[articulo] ADD  DEFAULT ((1)) FOR [estado]
 GO
 
-ALTER TABLE [dbo].[articulo] ADD  CONSTRAINT [DF_articulo_creacion_fecha]  DEFAULT (getdate()) FOR [creacion_fecha]
+ALTER TABLE [dbo].[articulo] ADD  CONSTRAINT [DF_articulo__creacion_fecha]  DEFAULT (getdate()) FOR [creacion_fecha]
 GO
 
-ALTER TABLE [dbo].[licor]  WITH CHECK ADD  CONSTRAINT [FK_tipo_articulo] FOREIGN KEY([id_articulo_licor])
-REFERENCES [dbo].[tipo_licor] ([id_tipo_licor])
+ALTER TABLE [dbo].[articulo]  WITH CHECK ADD  CONSTRAINT [FK_articulo_segmento] FOREIGN KEY([id_tipo_articulo_segmento])
+REFERENCES [dbo].[tipo_articulo_segmento] ([id_tipo_articulo_segmento])
 GO
 
-ALTER TABLE [dbo].[licor] CHECK CONSTRAINT [FK_tipo_licor]
+ALTER TABLE [dbo].[articulo] CHECK CONSTRAINT [FK_articulo_segmento]
 GO
 
 
