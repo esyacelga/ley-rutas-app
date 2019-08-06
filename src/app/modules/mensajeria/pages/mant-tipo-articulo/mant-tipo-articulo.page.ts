@@ -27,7 +27,7 @@ export class MantTipoArticuloPage implements OnInit {
     }
 
     ngOnInit() {
-        this.obtnerTipoArticulo();
+        //this.obtnerTipoArticulo();
     }
 
     async eliminarTipoArticulo(objTipoArticulo: TipoArticulo) {
@@ -36,9 +36,10 @@ export class MantTipoArticuloPage implements OnInit {
     }
 
     async registrarTipoArticulo(objTipoArticulo: TipoArticulo) {
+        objTipoArticulo.estado = 1;
         this.srvTipoArticulo.registarTipoArticulo(objTipoArticulo);
         this.objTipoArticulo = null;
-        this.obtnerTipoArticulo();
+        //this.obtnerTipoArticulo();
     }
 
 

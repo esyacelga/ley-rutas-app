@@ -18,7 +18,7 @@ import {RestConectionService} from './rest-conection.service';
 @Injectable({
     providedIn: 'root'
 })
-    export class ExecuteCallProcedureService {
+export class ExecuteCallProcedureService {
 
     constructor(private utilService: Util, private notify: ToastController, protected loading: LoadingService, private restConnection: RestConectionService) {
     }
@@ -117,6 +117,51 @@ import {RestConectionService} from './rest-conection.service';
         });
 
         return promesa;
+    };
+
+    public servicioRestGenerico = function(genericObject: any, urlRestService: string, messages?: RequestOptions) {
+        return new Promise((resolve, reject) => {
+            if (!messages) {
+                messages = new RequestOptions();
+            }
+            if (messages.successMessaje === undefined) {
+                messages.successMessaje = SUCCESS_MESSAGE;
+            }
+            if (messages.errorMessage === undefined) {
+                messages.errorMessage = ERROR_MESSAGE;
+            }
+            if (messages.loadingMessage === undefined) {
+                messages.loadingMessage = LOAD_MESSAGE;
+            }
+            if (messages.toastColor === undefined) {
+                messages.toastColor = COLOR_TOAST_PRIMARY;
+            }
+            this.loading.present('messagesService.loadMessagesOverview', messages.loadingMessage);
+            this.restConnection.genericPostRestFull(genericObject, urlRestService).subscribe(resp => {
+                this.loading.dismiss('messagesService.loadMessagesOverview');
+                this.presentToast(messages.successMessaje, messages.toastColor);
+
+                let obj = null;
+                if (messages.responseType === 1) {
+                    obj = resp;
+                } else {
+                    obj = resp.objeto;
+                }
+                resolve(obj);
+
+            }, error => {
+                console.log(error);
+                console.log(urlRestService);
+                this.loading.dismiss('messagesService.loadMessagesOverview');
+                if (error && error.errors && error.errors.errors) {
+                    this.presentToast(error.errors.errors.message, COLOR_TOAST_ERROR);
+                } else {
+                    this.presentToast(messages.errorMessage, COLOR_TOAST_ERROR);
+                }
+
+                reject(error);
+            });
+        });
     };
 
 

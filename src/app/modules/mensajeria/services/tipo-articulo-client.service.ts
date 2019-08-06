@@ -4,6 +4,7 @@ import {ExecuteCallProcedureService} from '../../system/generic/service/execute-
 import {TipoArticulo} from '../classes/tipo-articulo';
 import {PROC_XML_CRUD_TIPO_ARTICULO} from '../../system/generic/classes/ContanteTransaccional';
 import {PROC_XML_CONSULTAS_APP} from '../../system/generic/classes/constant';
+import {URL_CREAR_TIPO_ARTICULO} from '../../system/generic/classes/UrlPostRestService';
 
 @Injectable({
     providedIn: 'root'
@@ -16,7 +17,7 @@ export class TipoArticuloClientService {
 
     async registarTipoArticulo(tipoArticulo: TipoArticulo) {
         const requestOptions = new RequestOptions();
-        return <TipoArticulo> await this.genericService.ejecucionGenerica(tipoArticulo, PROC_XML_CRUD_TIPO_ARTICULO, requestOptions);
+        return <TipoArticulo> await this.genericService.servicioRestGenerico(tipoArticulo, URL_CREAR_TIPO_ARTICULO, requestOptions);
     }
 
 

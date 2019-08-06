@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {LoadingController} from '@ionic/angular';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class LoadingService {
 
-  constructor(public loadingController: LoadingController) { }
+    constructor(public loadingController: LoadingController) {
+    }
 
   async present(loadingId: string, loadingMessage: string) {
     const loading = await this.loadingController.create({
@@ -16,7 +17,7 @@ export class LoadingService {
     return await loading.present();
   }
 
-  async dismiss(loadingId: string) {
-    return await this.loadingController.dismiss(null, null, loadingId);
-  }
+    async dismiss(loadingId: string) {
+        return await this.loadingController.dismiss(null, null, loadingId);
+    }
 }

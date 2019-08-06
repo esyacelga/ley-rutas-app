@@ -1,11 +1,11 @@
-export const URL_SERVICIOS = 'http://localhost:8080/siisspol-web';
+export const URL_SERVICIOS = 'http://localhost:3000';
 
 
 export const FORMATO_FECHA = 'dd/MM/yyyy';
 export const DELIMITADOR_FECHA_IONIC = '-';
 
 export const SUCCESS_MESSAGE = 'Proceso ejecutado exitosamente';
-export const ERROR_MESSAGE = 'Hubo un problema en PROC_XML_REST_REGISTRO_USUARIla aplicación, por favor espere, estamos solucionando este problema';
+export const ERROR_MESSAGE = 'Hubo un problema en la aplicación, por favor espere, estamos solucionando este problema';
 export const LOAD_MESSAGE = 'Procesando...';
 export const DURATION_TOAST = 3000;
 export const COLOR_TOAST_PRIMARY = 'primary';
