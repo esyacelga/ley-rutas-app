@@ -44,4 +44,9 @@ export class RestConectionService {
         return this.http.post(url, genericObject);
     };
 
+    public genericPutRestFull = function(genericObject: any, urlRestService: string) {
+        const url = URL_SERVICIOS + '/' + urlRestService;
+        return this.http.put(url, genericObject);
+    };
+
 }

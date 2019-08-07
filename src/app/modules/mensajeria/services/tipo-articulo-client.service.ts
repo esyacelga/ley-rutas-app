@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {RequestOptions} from '../../system/generic/classes/RequestOptions';
 import {ExecuteCallProcedureService} from '../../system/generic/service/execute-call-procedure.service';
 import {TipoArticulo} from '../classes/tipo-articulo';
-import {URL_CREAR_TIPO_ARTICULO} from '../../system/generic/classes/UrlPostRestService';
+import {URL_CREAR_TIPO_ARTICULO, URL_OBTENER_TODOS_ARTICULO} from '../../system/generic/classes/UrlPostRestService';
 
 @Injectable({
     providedIn: 'root'
@@ -21,7 +21,7 @@ export class TipoArticuloClientService {
 
     async obtenerTipoArticulos() {
         const requestOptions = new RequestOptions();
-        return await this.genericService.servicioRestGenericoGet({}, URL_CREAR_TIPO_ARTICULO, requestOptions);
+        return await this.genericService.servicioRestGenericoGet({}, URL_OBTENER_TODOS_ARTICULO, requestOptions);
     }
 
 }
