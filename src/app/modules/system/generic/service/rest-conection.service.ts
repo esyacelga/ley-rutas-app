@@ -32,6 +32,13 @@ export class RestConectionService {
         return this.http.post(url, obj);
     };
 
+
+    public genericGetRestFull = function(genericObject: any, genericGetRestFull: string) {
+        const url = URL_SERVICIOS + '/' + genericGetRestFull;
+        return this.http.put(url, genericObject);
+    };
+
+
     public genericPostRestFull = function(genericObject: any, urlRestService: string) {
         const url = URL_SERVICIOS + '/' + urlRestService;
         return this.http.post(url, genericObject);

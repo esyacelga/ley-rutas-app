@@ -27,7 +27,7 @@ export class MantTipoArticuloPage implements OnInit {
     }
 
     ngOnInit() {
-        //this.obtnerTipoArticulo();
+        this.obtnerTipoArticulo();
     }
 
     async eliminarTipoArticulo(objTipoArticulo: TipoArticulo) {

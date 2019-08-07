@@ -119,7 +119,47 @@ export class ExecuteCallProcedureService {
         return promesa;
     };
 
-    public servicioRestGenerico = function(genericObject: any, urlRestService: string, messages?: RequestOptions) {
+
+    public async servicioRestGenericoGet(genericObject: any, urlRestService: string, options?: RequestOptions) {
+        if (!options) {
+            options = new RequestOptions();
+        }
+        const promesa = new Promise(async (resolve, reject) => {
+
+            if (options.successMessaje === undefined) {
+                options.successMessaje = SUCCESS_MESSAGE;
+            }
+            if (options.errorMessage === undefined) {
+                options.errorMessage = ERROR_MESSAGE;
+            }
+            if (options.loadingMessage === undefined) {
+                options.loadingMessage = LOAD_MESSAGE;
+            }
+            if (options.toastColor === undefined) {
+                options.toastColor = COLOR_TOAST_PRIMARY;
+            }
+            await this.loading.present('messagesService.loadMessagesOverview', 'Procesando...');
+            this.restConnection.genericGetRestFull(genericObject, urlRestService).subscribe(async resp => {
+                this.loading.dismiss('messagesService.loadMessagesOverview');
+                let obj = null;
+                if (options.responseType === 1) {
+                    obj = resp;
+                } else {
+                    obj = resp.objeto;
+                }
+                resolve(obj);
+            }, async error => {
+                await this.loading.dismiss('messagesService.loadMessagesOverview');
+                console.log(error);
+                console.log(urlRestService);
+                this.presentToast(options.errorMessage, COLOR_TOAST_ERROR);
+                reject(error);
+            });
+        });
+        return promesa;
+    }
+
+    public servicioRestGenericoPost = function(genericObject: any, urlRestService: string, messages?: RequestOptions) {
         return new Promise(async (resolve, reject) => {
             if (!messages) {
                 messages = new RequestOptions();
