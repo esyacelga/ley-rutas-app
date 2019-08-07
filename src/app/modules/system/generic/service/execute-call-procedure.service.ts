@@ -120,7 +120,7 @@ export class ExecuteCallProcedureService {
     };
 
     public servicioRestGenerico = function(genericObject: any, urlRestService: string, messages?: RequestOptions) {
-        return new Promise((resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
             if (!messages) {
                 messages = new RequestOptions();
             }
@@ -136,9 +136,9 @@ export class ExecuteCallProcedureService {
             if (messages.toastColor === undefined) {
                 messages.toastColor = COLOR_TOAST_PRIMARY;
             }
-            this.loading.present('messagesService.loadMessagesOverview', messages.loadingMessage);
-            this.restConnection.genericPostRestFull(genericObject, urlRestService).subscribe(resp => {
-                this.loading.dismiss('messagesService.loadMessagesOverview');
+            await this.loading.present('messagesService.loadMessagesOverview', messages.loadingMessage);
+            this.restConnection.genericPostRestFull(genericObject, urlRestService).subscribe(async resp => {
+                await this.loading.dismiss('messagesService.loadMessagesOverview');
                 this.presentToast(messages.successMessaje, messages.toastColor);
 
                 let obj = null;
@@ -149,10 +149,10 @@ export class ExecuteCallProcedureService {
                 }
                 resolve(obj);
 
-            }, error => {
+            }, async error => {
                 console.log(error);
                 console.log(urlRestService);
-                this.loading.dismiss('messagesService.loadMessagesOverview');
+                await this.loading.dismiss('messagesService.loadMessagesOverview');
                 if (error && error.errors && error.errors.errors) {
                     this.presentToast(error.errors.errors.message, COLOR_TOAST_ERROR);
                 } else {
