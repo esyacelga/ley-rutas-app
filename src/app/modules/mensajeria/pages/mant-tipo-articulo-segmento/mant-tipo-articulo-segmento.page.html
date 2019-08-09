@@ -22,10 +22,10 @@
     <ion-list *ngIf="segmentoArticulo">
         <ion-item>
             <ion-label>Tipo Articulo</ion-label>
-            <ion-select [(ngModel)]="segmentoArticulo.idTipoArticulo"
+            <ion-select [(ngModel)]="segmentoArticulo.tipoArticulo"
                         okText="Okay" cancelText="Dismiss">
                 <ion-select-option *ngFor="let item  of lstTipoArticulos"
-                                   value="{{item.idTipoArticulo}}">{{item.descripcion|uppercase}}</ion-select-option>
+                                   value="{{item._id}}">{{item.descripcion|uppercase}}</ion-select-option>
             </ion-select>
         </ion-item>
         <ion-item>

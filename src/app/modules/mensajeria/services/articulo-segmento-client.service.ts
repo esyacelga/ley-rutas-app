@@ -4,7 +4,7 @@ import {TipoArticulo} from '../classes/tipo-articulo';
 import {RequestOptions} from '../../system/generic/classes/RequestOptions';
 import {PROC_XML_CRUD_ARTICULO_SEGMENTO} from '../../system/generic/classes/ContanteTransaccional';
 import {ArticuloSegmento} from '../classes/articulo-segmento';
-import {PROC_XML_CONSULTAS_APP} from '../../system/generic/classes/constant';
+import {URL_CRUD_ARTICULO_SEGMENTO, URL_OBTENER_TODOS_ARTICULO_SEGMENTO} from '../../system/generic/classes/UrlPostRestService';
 
 @Injectable({
     providedIn: 'root'
@@ -17,21 +17,13 @@ export class ArticuloSegmentoClientService {
 
     async registarTipoArticuloSegmento(articuloSegmento: ArticuloSegmento) {
         const requestOptions = new RequestOptions();
-        return <TipoArticulo> await this.genericService.ejecucionGenerica(articuloSegmento, PROC_XML_CRUD_ARTICULO_SEGMENTO, requestOptions);
+        return <TipoArticulo> await this.genericService.servicioRestGenericoPost(articuloSegmento, URL_CRUD_ARTICULO_SEGMENTO, requestOptions);
     }
 
     async obtenerSegmentos() {
         const requestOptions = new RequestOptions();
-        const objConsulta = {
-            tipoConsulta: 'TIPOSEGMENTO',
-            data: '0'
-        };
-        if (objConsulta) {
-            return await this.genericService.getGenericObjects(objConsulta, PROC_XML_CONSULTAS_APP, requestOptions);
-        }
+        return await this.genericService.servicioRestGenericoGet({}, URL_OBTENER_TODOS_ARTICULO_SEGMENTO, requestOptions);
     }
-
-
 
 
 }

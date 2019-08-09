@@ -17,9 +17,9 @@ export class MantTipoArticuloSegmentoPage implements OnInit {
     constructor(private svcTipoArticulo: TipoArticuloClientService, private svcArticuloSegmento: ArticuloSegmentoClientService) {
     }
 
-    ngOnInit() {
-        this.obtenerTipoArticuloTodos();
-        this.obtenerSegmentos();
+    async ngOnInit() {
+        await this.obtenerTipoArticuloTodos();
+        await this.obtenerSegmentos();
     }
 
     crearNuevo() {
@@ -27,15 +27,16 @@ export class MantTipoArticuloSegmentoPage implements OnInit {
     }
 
     async registrarNuevo(objGuardar: ArticuloSegmento) {
-        // @ts-ignore
+        // @ts-ignore}
+        objGuardar.estado = 1;
         await this.svcArticuloSegmento.registarTipoArticuloSegmento(objGuardar);
+        await this.obtenerSegmentos();
         this.segmentoArticulo = null;
     }
 
     async obtenerTipoArticuloTodos() {
         // @ts-ignore
         this.lstTipoArticulos = await this.svcTipoArticulo.obtenerTipoArticulos();
-        console.log(this.lstTipoArticulos);
     }
 
 
@@ -46,7 +47,8 @@ export class MantTipoArticuloSegmentoPage implements OnInit {
 
     async eliminar(articuloSegmento: ArticuloSegmento) {
         articuloSegmento.estado = 0;
-        this.registrarNuevo(articuloSegmento);
+        await this.svcArticuloSegmento.registarTipoArticuloSegmento(articuloSegmento);
+        this.obtenerSegmentos();
         this.segmentoArticulo = null;
     }
 
