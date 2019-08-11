@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {ExecuteCallProcedureService} from '../../system/generic/service/execute-call-procedure.service';
 import {RequestOptions} from '../../system/generic/classes/RequestOptions';
 import {URL_PAGINAR_ARTICULO} from '../../system/generic/classes/UrlPostRestService';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import {FileTransfer, FileTransferObject, FileUploadOptions} from '@ionic-native/file-transfer/ngx';
 import {environment} from '../../../../environments/environment';
 
 const URL = environment.url;
@@ -16,19 +16,23 @@ export class ArticuloService {
     constructor(private genericService: ExecuteCallProcedureService, private fileTransfer: FileTransfer) {
     }
 
-    subirImagen( img: string ) {
+    subirImagen(img: string) {
         const options: FileUploadOptions = {
-            fileKey: 'image'
+            fileKey: 'image',
+            headers: {
+                'directorio': 'pruebas'
+            }
         };
         const fileTransfer: FileTransferObject = this.fileTransfer.create();
-        fileTransfer.upload( img, `${ URL }/posts/upload`, options )
-            .then( data => {
+        fileTransfer.upload(img, `${URL}/posts/upload`, options)
+            .then(data => {
                 console.log(data);
-            }).catch( err => {
+            }).catch(err => {
             console.log('error en carga', err);
         });
 
     }
+
     async obtenerArticuloPaginado(pull: boolean) {
         const requestOptions = new RequestOptions();
         requestOptions.responseType = 1;

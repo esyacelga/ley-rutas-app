@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
+    //{path: '', pathMatch: 'full', redirectTo: 'signin'},
     {path: '', loadChildren: './pages/tabs/tabs.module#TabsPageModule'},
     {path: 'signin', loadChildren: './modules/security/pages/login/signin/signin.module#SigninPageModule'},
     {path: 'register', loadChildren: './modules/security/pages/register/register.module#RegisterPageModule'},
@@ -15,7 +16,7 @@ const routes: Routes = [
         path: 'mant-tipo-articulo-segmento',
         loadChildren: './modules/mensajeria/pages/mant-tipo-articulo-segmento/mant-tipo-articulo-segmento.module#MantTipoArticuloSegmentoPageModule'
     },
-  { path: 'mant-articulo', loadChildren: './modules/mensajeria/pages/mant-articulo/mant-articulo.module#MantArticuloPageModule' }
+    {path: 'mant-articulo', loadChildren: './modules/mensajeria/pages/mant-articulo/mant-articulo.module#MantArticuloPageModule'}
 
 
 ];
