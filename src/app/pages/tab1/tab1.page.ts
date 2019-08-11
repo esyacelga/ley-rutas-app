@@ -8,14 +8,35 @@ import {Articulo} from '../../modules/mensajeria/classes/Articulo';
     styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit {
-    lstArticulo: Array<Articulo> = null;
+    lstArticulo: Articulo[] = [];
+    habilitado = true;
 
     constructor(private svrArticulo: ArticuloService) {
     }
 
     async ngOnInit() {
         // @ts-ignore
-        this.lstArticulo = await this.svrArticulo.obtenerArticuloPaginado();
+        this.siguientes();
+    }
+
+    recargar() {
+        this.siguientes(event, true);
+        this.habilitado = true;
+        this.lstArticulo = [];
+    }
+
+    async siguientes(event?, pull: boolean = false) {
+        const data: Articulo[] = [];
+        // @ts-ignore
+        data = await this.svrArticulo.obtenerArticuloPaginado(pull);
+        console.log(this.lstArticulo);
+        this.lstArticulo.push(...data);
+        if (event) {
+            event.target.complete();
+            if (0 === data.length) {
+                this.habilitado = false;
+            }
+        }
     }
 
 }

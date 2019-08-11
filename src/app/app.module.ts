@@ -11,12 +11,14 @@ import {AppComponent} from './app.component';
 import {ImagePicker} from '@ionic-native/image-picker/ngx';
 import {RestConectionModule} from './modules/system/generic/rest-conection/rest-conection.module';
 import {Camera} from '@ionic-native/camera/ngx';
+import {FileTransfer} from '@ionic-native/file-transfer/ngx';
 
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
     imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, RestConectionModule],
     providers: [
+        FileTransfer,
         StatusBar,
         Camera,
         SplashScreen,

@@ -11,6 +11,7 @@ import {PipesModule} from '../pipes/pipes.module';
         ArticulosComponent
     ],
     exports: [
+        PipesModule,
         ArticulosComponent
     ],
     imports: [
