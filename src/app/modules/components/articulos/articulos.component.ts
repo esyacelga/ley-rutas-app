@@ -1,14 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-articulos',
-  templateUrl: './articulos.component.html',
-  styleUrls: ['./articulos.component.scss'],
+    selector: 'app-articulos',
+    templateUrl: './articulos.component.html',
+    styleUrls: ['./articulos.component.scss'],
 })
 export class ArticulosComponent implements OnInit {
 
-  constructor() { }
+    @Input() articulos: any;
 
-  ngOnInit() {}
+    constructor() {
+    }
+
+    ngOnInit() {
+
+        console.log('hola');
+        console.log(this.articulos);
+    }
 
 }
