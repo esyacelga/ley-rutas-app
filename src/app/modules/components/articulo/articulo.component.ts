@@ -10,6 +10,8 @@ export class ArticuloComponent implements OnInit {
 
     @Input() articulo: Articulo = new Articulo();
 
+    url = '/src/assets/perro-1.jpg';
+
     constructor() {
     }
 

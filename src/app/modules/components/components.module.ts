@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ArticuloComponent} from './articulo/articulo.component';
 import {ArticulosComponent} from './articulos/articulos.component';
 import {IonicModule} from '@ionic/angular';
+import {PipesModule} from '../pipes/pipes.module';
 
 @NgModule({
     declarations: [
@@ -13,6 +14,7 @@ import {IonicModule} from '@ionic/angular';
         ArticulosComponent
     ],
     imports: [
+        PipesModule,
         CommonModule,
         IonicModule
     ]
