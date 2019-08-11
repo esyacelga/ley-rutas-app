@@ -1,5 +1,7 @@
 {
   "name": "ley-ruta-app",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
