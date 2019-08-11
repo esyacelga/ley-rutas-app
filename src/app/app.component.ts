@@ -22,7 +22,9 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.navCtrl.navigateRoot('mant-tipo-articulo-segmento');
+
+      //this.navCtrl.navigateRoot( '/main/tabs/tab1', { animated: true } );
+  //    this.navCtrl.navigateRoot('mant-tipo-articulo-segmento');
     });
   }
 }
