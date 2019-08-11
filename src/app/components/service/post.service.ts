@@ -1,9 +1,16 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {ExecuteCallProcedureService} from '../../modules/system/generic/service/execute-call-procedure.service';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class PostService {
 
-  constructor() { }
+    paginaPost = 0;
+
+    constructor(private genericService: ExecuteCallProcedureService) {
+
+    }
+
+
 }
