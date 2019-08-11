@@ -143,7 +143,7 @@ export class ExecuteCallProcedureService {
                 this.loading.dismiss('messagesService.loadMessagesOverview');
                 let obj = null;
                 if (options.responseType === 1) {
-                    obj = resp;
+                    obj = resp.items;
                 } else {
                     obj = resp.objeto;
                 }
