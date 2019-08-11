@@ -12,8 +12,9 @@ export class ArticuloService {
     constructor(private genericService: ExecuteCallProcedureService) {
     }
 
-    async obtenerArticulos() {
+    async obtenerArticuloPaginado() {
         const requestOptions = new RequestOptions();
+        requestOptions.responseType = 1;
         this.paginaPost++;
         const obj = {
             pagina: this.paginaPost,
